@@ -10,7 +10,8 @@ import { PerspectiveCamera } from '@react-three/drei'
 const Vision = () => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Box sx={{ pt: 30 }}>
+            {/* Expression produces a union type that is too complex to represent. */}
+            <Box component="span" pt={30}>
                 <Grid container spacing={1} direction={'column'} >{/* direction={'column'}で中央寄せに */}
                     <Grid container spacing={1} >
                         <Grid xs={4}>
@@ -54,7 +55,7 @@ const Vision = () => {
 export const Landolt_C_view = () => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Box sx={{ pt: 20 }}>
+            <Box component="span" pt={20}>
                 <Grid container spacing={1} >
                     <Canvas style={{ width: `110px`, height: `110px`, display: 'flex', justifyContent: 'center' }}>
                         <Suspense>

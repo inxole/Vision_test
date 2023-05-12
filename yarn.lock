@@ -651,7 +651,7 @@
 
 "@mui/system@^5.12.3":
   version "5.12.3"
-  resolved "https://registry.npmjs.org/@mui/system/-/system-5.12.3.tgz"
+  resolved "https://registry.yarnpkg.com/@mui/system/-/system-5.12.3.tgz#306b3cdffa3046067640219c1e5dd7e3dae38ff9"
   integrity sha512-JB/6sypHqeJCqwldWeQ1MKkijH829EcZAKKizxbU2MJdxGG5KSwZvTBa5D9qiJUA1hJFYYupjiuy9ZdJt6rV6w==
   dependencies:
     "@babel/runtime" "^7.21.0"
