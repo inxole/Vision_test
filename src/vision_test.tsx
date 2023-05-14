@@ -5,45 +5,62 @@ import Landolt_C from './Model/Landolt_C'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 import { PerspectiveCamera } from '@react-three/drei'
-
+import { useRecoilState } from 'recoil'
+import { RandomRotation, ScaleSize } from './atoms'
 
 const Vision = () => {
+    const [scale, setScale] = useRecoilState(ScaleSize)
+    const scaleValues = [4, 3, 2, 0.7, 0.5, 0.4, 0.3, 0.2, 0.1]
+    const currentIndex = scaleValues.indexOf(scale)
+    const [, setRotationY] = useRecoilState(RandomRotation)
+
+    const Click_Button = () => {
+        const nextIndex = (currentIndex + 1) % scaleValues.length;
+        if (scale == 0.1) {
+            setScale(4)
+            setRotationY(getRandomRotationY())
+        } else {
+            setScale(scaleValues[nextIndex])
+            setRotationY(getRandomRotationY())
+        }
+    }
+
+    const getRandomRotationY = () => {
+        const randomIndex = Math.floor(Math.random() * 4); // 0から3の乱数を生成
+        const rotationYValues = [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2]; // 0°, 90°, 180°, 270°
+        return rotationYValues[randomIndex];
+    }
+
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             {/* Expression produces a union type that is too complex to represent. */}
             <Box component="span" pt={30}>
                 <Grid container spacing={1} direction={'column'} >{/* direction={'column'}で中央寄せに */}
-                    <Grid container spacing={1} >
+                    <Grid container spacing={2} >
                         <Grid xs={4}>
-                            <canvas width={50} height={60}></canvas>
+                            <canvas aria-hidden width={50} height={60}></canvas>
                         </Grid>
                         <Grid xs={4}>
-                            <Button variant="contained" size="large" style={{ width: '50px', height: '60px' }}>{'⇧'}</Button>
-                        </Grid>
-                        <Grid xs={4}>
-                            <canvas width={50} height={60}></canvas>
+                            <Button variant="contained" size="large" style={{ width: '50px', height: '60px' }} onClick={Click_Button}>{'⇧'}</Button>
                         </Grid>
                     </Grid>
                     <Grid container spacing={2} >
                         <Grid xs={4}>
-                            <Button variant="contained" size="large" style={{ width: '50px', height: '60px' }} >{'⇦'}</Button>
+                            <Button variant="contained" size="large" style={{ width: '50px', height: '60px' }} onClick={Click_Button}>{'⇦'}</Button>
                         </Grid>
                         <Grid xs={4}>
-                            <canvas width={50} height={60}></canvas>
+                            <canvas aria-hidden width={50} height={60}></canvas>
                         </Grid>
                         <Grid xs={4}>
-                            <Button variant="contained" size="large" style={{ width: '50px', height: '60px' }}>{'⇨'}</Button>
+                            <Button variant="contained" size="large" style={{ width: '50px', height: '60px' }} onClick={Click_Button}>{'⇨'}</Button>
                         </Grid>
                     </Grid>
-                    <Grid container spacing={1} >
+                    <Grid container spacing={2} >
                         <Grid xs={4}>
-                            <canvas width={50} height={60}></canvas>
+                            <canvas aria-hidden width={50} height={60}></canvas>
                         </Grid>
                         <Grid xs={4}>
-                            <Button variant="contained" size="large" style={{ width: '50px', height: '60px' }}>{'⇩'}</Button>
-                        </Grid>
-                        <Grid xs={4}>
-                            <canvas width={50} height={60}></canvas>
+                            <Button variant="contained" size="large" style={{ width: '50px', height: '60px' }} onClick={Click_Button}>{'⇩'}</Button>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -53,6 +70,8 @@ const Vision = () => {
 }
 
 export const Landolt_C_view = () => {
+    const [scale,] = useRecoilState(ScaleSize)
+    const [rotationY,] = useRecoilState(RandomRotation)
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Box component="span" pt={20}>
@@ -61,7 +80,7 @@ export const Landolt_C_view = () => {
                         <Suspense>
                             <PerspectiveCamera makeDefault={true} position={[0, 0, 10]} />
                             <pointLight intensity={1} position={[0, 0, 100]} />
-                            <Landolt_C rotation={[Math.PI / 2, 0, 0]} scale={4} />
+                            <Landolt_C rotation={[Math.PI / 2, rotationY, 0]} scale={scale} />
                         </Suspense>
                     </Canvas>
                 </Grid>

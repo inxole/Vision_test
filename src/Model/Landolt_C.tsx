@@ -5,23 +5,35 @@ Command: npx gltfjsx@6.1.4 Landolt_C.gltf --transform
 
 // import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+// import { useRef } from 'react'
 import { GLTF } from 'three-stdlib'
+import { animated } from '@react-spring/three'
+// import { Mesh } from 'three'
+// import { useFrame } from '@react-three/fiber'
 
 type GLTFResult = GLTF & {
-  nodes: {
-    polySurface2: THREE.Mesh
-  }
-  materials: {
-    lambert1: THREE.MeshStandardMaterial
-  }
+  nodes: { polySurface2: THREE.Mesh }
+  materials: { lambert1: THREE.MeshStandardMaterial }
 }
+
 
 function Model(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('Landolt_C.gltf') as GLTFResult
+  // const Size_ref = useRef<Mesh>(null)
+  // useFrame((state, delta) => {
+  //   if (Size_ref.current != undefined) {
+  //     Size_ref.current.scale.x
+  //     Size_ref.current.scale.y
+  //     Size_ref.current.scale.z
+  //   }
+  // })
+
   return (
-    <group {...props} dispose={null}>
-      <mesh geometry={nodes.polySurface2.geometry} material={materials.lambert1} rotation={[Math.PI / 2, 0, 0]} />
-    </group>
+    // <animated.mesh ref={Size_ref} >
+      <group {...props} dispose={null}>
+        <mesh geometry={nodes.polySurface2.geometry} material={materials.lambert1} rotation={[Math.PI / 2, 0, 0]} />
+      </group>
+    // </animated.mesh>
   )
 }
 
