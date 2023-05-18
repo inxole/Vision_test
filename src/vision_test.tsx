@@ -6,38 +6,31 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense, useEffect } from 'react'
 import { PerspectiveCamera } from '@react-three/drei'
 import { useRecoilState } from 'recoil'
-import { ButtonDirection, RandomRotation, ScaleSize } from './atoms'
+import { RandomRotation, ScaleSize } from './atoms'
+import getRandomRotationY from './function'
 
 const Vision = () => {
     const [scale, setScale] = useRecoilState(ScaleSize)
     const [rotationY, setRotationY] = useRecoilState(RandomRotation)
-    const [name, setName] = useRecoilState(ButtonDirection)
     const scaleValues = [4, 3, 2, 0.7, 0.5, 0.4, 0.3, 0.2, 0.1]
     const currentIndex = scaleValues.indexOf(scale)
 
-    const Click_Button = async (n: string) => {
-        const nextIndex = (currentIndex + 1) % scaleValues.length
-        setName(n)
-        setName((x) => { return x })
+    const Click_Button = (n: string) => {
+        const R_X = getRandomRotationY()
         if (scale == 0.1) {
             setScale(4)
             setRotationY(getRandomRotationY())
-        } else {
-            if (rotationY == 0 && name == 'right' ||
-                rotationY == Math.PI / 2 && name == 'up' ||
-                rotationY == Math.PI && name == 'left' ||
-                rotationY == (3 * Math.PI) / 2 && name == 'down'
+        } else if (scale > 0.1) {
+            if (rotationY == 0 && n == 'right' ||
+                rotationY == Math.PI / 2 && n == 'up' ||
+                rotationY == Math.PI && n == 'left' ||
+                rotationY == (3 * Math.PI) / 2 && n == 'down'
             ) {
-                setScale(scaleValues[nextIndex])
-                setRotationY(getRandomRotationY())
+                setScale(scaleValues[currentIndex + 1])
+                setRotationY(R_X)
+                setRotationY((x) => { return x })
             }
         }
-    }
-
-    const getRandomRotationY = () => {
-        const randomIndex = Math.floor(Math.random() * 4)// 0から3の乱数を生成
-        const rotationYValues = [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2]// 0°, 90°, 180°, 270°
-        return rotationYValues[randomIndex]
     }
 
     useEffect(() => {
