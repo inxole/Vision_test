@@ -48,7 +48,7 @@ const Vision = () => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
             {/* Expression produces a union type that is too complex to represent. component="span"を追加して解決*/}
-            <Box component="span" pt={15}>
+            <Box component="span" pt={5}>
                 <Grid container spacing={1} direction={'column'} >{/* direction={'column'}で中央寄せに */}
                     <Grid container spacing={2} >
                         <Grid xs={4}>
@@ -89,7 +89,7 @@ export const Landolt_C_view = () => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Box component="span" pt={10}>
+            <Box component="span" pt={5}>
                 <Grid container spacing={1} xs={12}>
                     <Canvas style={{ width: `224px`, height: `224px`, display: 'flex', justifyContent: 'center' }}>
                         <Suspense>

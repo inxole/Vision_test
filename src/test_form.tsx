@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box"
-import { useRecoilState, useRecoilValue } from "recoil"
+import { useRecoilValue } from "recoil"
 import { EyesightSelector } from "./selector"
 // import Grid from "@mui/material/Grid"
 
