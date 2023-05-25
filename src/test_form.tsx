@@ -8,7 +8,7 @@ export const Up_text = () => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Box component="span" pt={5}>
+            <Box component="span" pt={3}>
                 <div>現在の視力は  <span style={{ fontSize: '25px', color: 'red' }}>{eyesight}</span>  です。</div>
             </Box>
         </div>
@@ -18,7 +18,7 @@ export const Up_text = () => {
 export const Under_text = () => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Box component="span" pt={5}>
+            <Box component="span" pt={3}>
                 <div>画面から５０ｃｍ離れてください。</div>
             </Box>
         </div>
