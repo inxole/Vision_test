@@ -47,9 +47,8 @@ const Vision = () => {
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
-            {/* Expression produces a union type that is too complex to represent. component="span"を追加して解決*/}
             <Box component="span" pt={3}>
-                <Grid container spacing={1} direction={'column'} >{/* direction={'column'}で中央寄せに */}
+                <Grid container spacing={1} direction={'column'} >
                     <Grid container spacing={2} >
                         <Grid xs={4}>
                             <canvas aria-hidden width={50} height={60}></canvas>

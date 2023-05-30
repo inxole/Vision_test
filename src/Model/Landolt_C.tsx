@@ -12,7 +12,6 @@ type GLTFResult = GLTF & {
 
 function Model(props: JSX.IntrinsicElements['group']) {
   const { nodes, materials } = useGLTF('Landolt_C.gltf') as GLTFResult
-
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.polySurface2.geometry} material={materials.lambert1} rotation={[Math.PI / 2, 0, 0]} />
