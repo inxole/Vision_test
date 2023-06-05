@@ -3,11 +3,11 @@
 
 vision test on typescript and three.js
 
-![vision_test_picture](https://github.com/inxole/Vision_test/assets/109216583/b5d024ad-363b-4d4a-8b4a-2e89b813b6ba)
+![vision_test_picture](https://github.com/inxole/Vision_test/assets/109216583/9e2d1ab2-577d-4788-8de0-f343b872f398)
 
 ## Usage
 
-![vision_test_process](https://github.com/inxole/Vision_test/assets/109216583/cdd5a9ea-1a89-4d9a-9b4a-604144526d7b)
+![vision_test_process](https://github.com/inxole/Vision_test/assets/109216583/5166ba68-8136-4c78-ae34-6c8965dda35b)
 
 ①This is the initial screen. Press the blue "START" button.  
 
